@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%- include('header.ejs') %>
+    <body>
+        <%- include('nav.ejs') %>
+        <main class="main">
+            <section class="s-log-in">
+                <div class="c-log-in">
+                    <h1 class="s-log-in__title">Welcome back!</h1>
+                    <% if (locals.errorMessage) { %>
+                    <p class="error-message"><%= errorMessage %></p>
+                    <% } %>
+                    <form
+                        class="log-in-form"
+                        action="/log-in<%= locals.referrer ? `?referrer=${referrer}` : ''%>"
+                        method="POST"
+                    >
+                        <div class="log-in-form__group">
+                            <div
+                                class="c-log-in-form__input log-in-form__label--username"
+                            >
+                                <input
+                                    type="text"
+                                    class="log-in-form__input log-in-form__input--username"
+                                    name="username"
+                                    id="username"
+                                    placeholder=" "
+                                />
+                                <label
+                                    class="log-in-form__label"
+                                    for="username"
+                                >
+                                    Username
+                                </label>
+                            </div>
+                            <div class="c-log-in-form__input">
+                                <input
+                                    type="password"
+                                    class="log-in-form__input"
+                                    name="password"
+                                    id="password"
+                                    placeholder=" "
+                                />
+                                <label
+                                    class="log-in-form__label"
+                                    for="password"
+                                >
+                                    Password
+                                </label>
+                            </div>
+                        </div>
+                        <button class="log-in-form__submit-btn" type="submit">
+                            Log in
+                        </button>
+                    </form>
+
+                    <p class="s-log-in__footer">
+                        Don't have an account yet?
+                        <a class="s-log-in__footer-link" href="/sign-up"
+                            >Sign up</a
+                        >
+                    </p>
+                </div>
+            </section>
+        </main>
+        <%- include('footer.ejs') %>
+    </body>
+</html>
